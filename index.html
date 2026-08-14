@@ -1,0 +1,241 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document Signature Monitoring</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div>
+        <h1>Document Signature Monitoring</h1>
+        <p>Monitor document signatories and document movement</p>
+    </div>
+
+    <button class="add-btn" onclick="openAddModal()">
+        + Add Document
+    </button>
+
+</header>
+
+
+<main class="container">
+
+    <!-- DASHBOARD -->
+
+    <section class="dashboard">
+
+        <div class="dashboard-card">
+            <span>Total Documents</span>
+            <strong id="totalDocuments">0</strong>
+        </div>
+
+        <div class="dashboard-card">
+            <span>Completed</span>
+            <strong id="completedDocuments">0</strong>
+        </div>
+
+        <div class="dashboard-card">
+            <span>Pending</span>
+            <strong id="pendingDocuments">0</strong>
+        </div>
+
+    </section>
+
+
+    <!-- SEARCH -->
+
+    <section class="search-area">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search document name..."
+            onkeyup="displayDocuments()"
+        >
+
+    </section>
+
+
+    <!-- TABLE -->
+
+    <section class="table-wrapper">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>DATE</th>
+
+                    <th>DOCUMENT NAME</th>
+
+                    <th>TRUSTED BY</th>
+
+                    <th>SIGNATORIES</th>
+
+                    <th>RECEIVED BY</th>
+
+                    <th>REMARK</th>
+
+                    <th>ACTION</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="documentTableBody"></tbody>
+
+        </table>
+
+
+        <div
+            id="emptyMessage"
+            class="empty-message"
+        >
+            No documents available.
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ADD / EDIT MODAL -->
+
+<div
+    id="documentModal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add Document
+            </h2>
+
+            <button
+                class="close-btn"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="documentForm">
+
+            <input
+                type="hidden"
+                id="documentId"
+            >
+
+
+            <label>
+                Date
+            </label>
+
+            <input
+                type="date"
+                id="documentDate"
+                required
+            >
+
+
+            <label>
+                Document Name
+            </label>
+
+            <input
+                type="text"
+                id="documentName"
+                placeholder="Enter document name"
+                required
+            >
+
+
+            <label>
+                Trusted By
+            </label>
+
+            <input
+                type="text"
+                id="trustedBy"
+                placeholder="Enter trusted person"
+                required
+            >
+
+
+            <!-- SIGNATORIES -->
+
+            <div class="section-title">
+
+                <h3>
+                    Signatories
+                </h3>
+
+                <button
+                    type="button"
+                    class="small-btn"
+                    onclick="addSignatoryField()"
+                >
+                    + Add Signatory
+                </button>
+
+            </div>
+
+
+            <p class="help-text">
+                Arrange signatories in the order they will receive
+                the document.
+            </p>
+
+
+            <div
+                id="signatoriesContainer"
+                class="people-container"
+            ></div>
+
+
+            <div class="form-buttons">
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="closeModal()"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="save-btn"
+                >
+                    Save Document
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
+```
