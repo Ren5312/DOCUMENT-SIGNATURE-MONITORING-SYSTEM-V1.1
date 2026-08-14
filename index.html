@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Document Signature Monitoring</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,7 +16,8 @@
         <p>Monitor document signatories and document movement</p>
     </div>
 
-    <button class="add-btn" onclick="openAddModal()">
+    <!-- ADD BUTTON -->
+    <button type="button" id="addDocumentBtn" class="add-btn">
         + Add Document
     </button>
 
@@ -28,7 +27,6 @@
 <main class="container">
 
     <!-- DASHBOARD -->
-
     <section class="dashboard">
 
         <div class="dashboard-card">
@@ -50,21 +48,18 @@
 
 
     <!-- SEARCH -->
-
     <section class="search-area">
 
         <input
             type="text"
             id="searchInput"
             placeholder="Search document name..."
-            onkeyup="displayDocuments()"
         >
 
     </section>
 
 
     <!-- TABLE -->
-
     <section class="table-wrapper">
 
         <table>
@@ -72,21 +67,13 @@
             <thead>
 
                 <tr>
-
                     <th>DATE</th>
-
                     <th>DOCUMENT NAME</th>
-
                     <th>TRUSTED BY</th>
-
                     <th>SIGNATORIES</th>
-
                     <th>RECEIVED BY</th>
-
                     <th>REMARK</th>
-
                     <th>ACTION</th>
-
                 </tr>
 
             </thead>
@@ -95,11 +82,7 @@
 
         </table>
 
-
-        <div
-            id="emptyMessage"
-            class="empty-message"
-        >
+        <div id="emptyMessage" class="empty-message">
             No documents available.
         </div>
 
@@ -108,12 +91,9 @@
 </main>
 
 
-<!-- ADD / EDIT MODAL -->
+<!-- ================= MODAL ================= -->
 
-<div
-    id="documentModal"
-    class="modal"
->
+<div id="documentModal" class="modal">
 
     <div class="modal-content">
 
@@ -124,8 +104,9 @@
             </h2>
 
             <button
+                type="button"
+                id="closeModalBtn"
                 class="close-btn"
-                onclick="closeModal()"
             >
                 ×
             </button>
@@ -141,7 +122,9 @@
             >
 
 
-            <label>
+            <!-- DATE -->
+
+            <label for="documentDate">
                 Date
             </label>
 
@@ -152,7 +135,9 @@
             >
 
 
-            <label>
+            <!-- DOCUMENT -->
+
+            <label for="documentName">
                 Document Name
             </label>
 
@@ -164,7 +149,9 @@
             >
 
 
-            <label>
+            <!-- TRUSTED BY -->
+
+            <label for="trustedBy">
                 Trusted By
             </label>
 
@@ -186,8 +173,8 @@
 
                 <button
                     type="button"
+                    id="addSignatoryBtn"
                     class="small-btn"
-                    onclick="addSignatoryField()"
                 >
                     + Add Signatory
                 </button>
@@ -196,8 +183,8 @@
 
 
             <p class="help-text">
-                Arrange signatories in the order they will receive
-                the document.
+                Arrange the signatories according to the order
+                they should receive the document.
             </p>
 
 
@@ -207,12 +194,14 @@
             ></div>
 
 
+            <!-- BUTTONS -->
+
             <div class="form-buttons">
 
                 <button
                     type="button"
+                    id="cancelBtn"
                     class="cancel-btn"
-                    onclick="closeModal()"
                 >
                     Cancel
                 </button>
